@@ -1,3 +1,4 @@
+package com.example.gwsapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,7 +11,10 @@ import com.example.gwsapp.ui.theme.GWSAppTheme
 import com.example.gwsapp.ui.viewmodel.UsuarioViewModel
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import com.example.gwsapp.data.factory.CategoriaViewModelFactory
+import com.example.gwsapp.data.repository.CategoriaRepository
 import com.example.gwsapp.ui.components.AppContent
+import com.example.gwsapp.ui.viewmodel.CategoriaViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +22,11 @@ class MainActivity : ComponentActivity() {
 
         val usuarioRepository = UsuarioRepository()
         val usuarioViewModel = ViewModelProvider(this, UsuarioViewModelFactory(usuarioRepository))[UsuarioViewModel::class.java]
-
+        val categoriaRepository = CategoriaRepository()
+        val categoriaViewModel = ViewModelProvider(this, CategoriaViewModelFactory(categoriaRepository))[CategoriaViewModel::class.java]
         setContent {
             GWSAppTheme {
-                AppContent(usuarioViewModel)
+                AppContent(usuarioViewModel, categoriaViewModel)
             }
         }
     }
