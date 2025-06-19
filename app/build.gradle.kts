@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -10,9 +12,10 @@ android {
     defaultConfig {
         applicationId = "com.example.gwsapp"
         minSdk = 24
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -48,23 +51,13 @@ android {
 
 dependencies {
 
+    // Firebase
+    implementation("com.google.firebase:firebase-auth:22.1.1")
+
     val nav_version = "2.7.7"
 
     // Jetpack Compose integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
-//
-//    // Views/Fragments integration
-//    implementation("androidx.navigation:navigation-fragment:$nav_version")
-//    implementation("androidx.navigation:navigation-ui:$nav_version")
-//
-//    // Feature module support for Fragments
-//    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
-//
-//    // Testing Navigation
-//    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
-//
-//    // JSON serialization library, works with the Kotlin serialization plugin
-//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

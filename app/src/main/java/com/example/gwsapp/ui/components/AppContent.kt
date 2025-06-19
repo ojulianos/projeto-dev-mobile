@@ -27,10 +27,12 @@ fun AppContent(viewModel: UsuarioViewModel) {
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            DrawerContent { route, title ->
-                scope.launch { drawerState.close() }
-                navController.navigate(route)
-                currentScreenTitle.value = title
+            ModalDrawerSheet {
+                DrawerContent { route, title ->
+                    scope.launch { drawerState.close() }
+                    navController.navigate(route)
+                    currentScreenTitle.value = title
+                }
             }
         },
         gesturesEnabled = false
@@ -54,7 +56,7 @@ fun AppNavHost(navController: NavHostController
 ) {
     NavHost(
         navController = navController,
-        startDestination = "usuarios"
+        startDestination = "dashboard"
     ) {
         Constants.MENU_ITEMS.forEach { (route, title) ->
             composable(route) {

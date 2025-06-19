@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "76952287866",
+    "project_id": "gws-app-satc",
+    "storage_bucket": "gws-app-satc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76952287866:android:a52b16e1de8f5876e699c3",
+        "android_client_info": {
+          "package_name": "com.example.gwsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS2cEO_UMqnrWC1JD9Al39DhsL_amIzrw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
