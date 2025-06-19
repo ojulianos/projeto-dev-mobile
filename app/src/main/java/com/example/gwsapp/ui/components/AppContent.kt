@@ -13,12 +13,16 @@ import com.example.gwsapp.ui.screens.CategoriasScreen
 import com.example.gwsapp.ui.screens.DashboardScreen
 import com.example.gwsapp.ui.screens.EventosScreen
 import com.example.gwsapp.ui.screens.UsuariosScreen
+import com.example.gwsapp.ui.viewmodel.CategoriaViewModel
 import com.example.gwsapp.ui.viewmodel.UsuarioViewModel
 import com.example.gwsapp.utils.Constants
 import kotlinx.coroutines.launch
 
 @Composable
-fun AppContent(viewModel: UsuarioViewModel) {
+fun AppContent(
+    usuarioViewModel: UsuarioViewModel,
+    categoriaViewModel: CategoriaViewModel
+    ) {
     val navController = rememberNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -42,7 +46,7 @@ fun AppContent(viewModel: UsuarioViewModel) {
             )
         }) { paddingValues ->
             Box(modifier = Modifier.padding(paddingValues)) {
-                AppNavHost(navController, viewModel)
+                AppNavHost(navController, usuarioViewModel, categoriaViewModel)
             }
         }
     }
@@ -51,6 +55,7 @@ fun AppContent(viewModel: UsuarioViewModel) {
 @Composable
 fun AppNavHost(navController: NavHostController
    , usuarioViewModel: UsuarioViewModel
+   , categoriaViewModel: CategoriaViewModel
 ) {
     NavHost(
         navController = navController,
@@ -60,7 +65,7 @@ fun AppNavHost(navController: NavHostController
             composable(route) {
                 when (route) {
                     "dashboard" -> DashboardScreen(navController)
-                    "categorias" -> CategoriasScreen(navController, usuarioViewModel)
+                    "categorias" -> CategoriasScreen(navController, categoriaViewModel)
                     "eventos" -> EventosScreen(navController, usuarioViewModel)
                     "usuarios" -> UsuariosScreen(navController, usuarioViewModel)
                 }
