@@ -1,0 +1,14 @@
+[
+  { "categoria": "Jan", "valor": 120 },
+  { "categoria": "Fev", "valor": 180 },
+  { "categoria": "Mar", "valor": 140 },
+  { "categoria": "Abr", "valor": 90 },
+  { "categoria": "Mai", "valor": 160 },
+  { "categoria": "Jun", "valor": 110 },
+  { "categoria": "Jul", "valor": 0 },
+  { "categoria": "Ago", "valor": 0 },
+  { "categoria": "Set", "valor": 0 },
+  { "categoria": "Out", "valor": 0 },
+  { "categoria": "Nov", "valor": 0 },
+  { "categoria": "Dez", "valor": 0 }
+]

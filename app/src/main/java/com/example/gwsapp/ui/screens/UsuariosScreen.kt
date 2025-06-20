@@ -8,9 +8,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.gwsapp.data.model.Categoria
 import com.example.gwsapp.data.model.Usuario
+import com.example.gwsapp.ui.components.CadastroCategoriaForm
 import com.example.gwsapp.ui.components.CadastroUsuarioForm
+import com.example.gwsapp.ui.components.CategoriaItem
 import com.example.gwsapp.ui.components.UsuarioItem
+import com.example.gwsapp.ui.viewmodel.CategoriaViewModel
 import com.example.gwsapp.ui.viewmodel.UsuarioViewModel
 
 @Composable
@@ -34,7 +38,9 @@ fun UsuariosScreen(navController: NavHostController, viewModel: UsuarioViewModel
                     if (selectedUser == null) {
                         viewModel.createUsuario(novoUsuario)
                     } else {
-                        viewModel.updateUsuario(selectedUser!!._id, novoUsuario)
+                        selectedUser?.id?.let { id ->
+                            viewModel.updateUsuario(id, novoUsuario)
+                        }
                     }
                     showForm = false
                 }
@@ -48,7 +54,7 @@ fun UsuariosScreen(navController: NavHostController, viewModel: UsuarioViewModel
                             selectedUser = usuario
                             showForm = true
                         },
-                        onDelete = { viewModel.deleteUsuario(usuario._id) }
+                        onDelete = { usuario.id?.let { id -> viewModel.deleteUsuario(id) } }
                     )
                 }
             }

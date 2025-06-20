@@ -1,6 +1,7 @@
 package com.example.gwsapp.data.repository
 
 import com.example.gwsapp.data.model.Usuario
+import com.example.gwsapp.data.model.UsuarioCreateRequest
 import com.example.gwsapp.data.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,7 +22,13 @@ class UsuarioRepository {
     }
 
     fun createUsuario(usuario: Usuario, onResult: (Usuario?) -> Unit) {
-        api.createUsuario(usuario).enqueue(object : Callback<Usuario> {
+        val usuarioCreate = UsuarioCreateRequest(
+            nome = usuario.nome,
+            email = usuario.email,
+            dataNascimento = usuario.dataNascimento,
+            senha = usuario.senha
+        )
+        api.createUsuario(usuarioCreate).enqueue(object : Callback<Usuario> {
             override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                 onResult(response.body())
             }

@@ -10,12 +10,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.gwsapp.data.factory.UsuarioViewModelFactory
 import com.example.gwsapp.data.repository.UsuarioRepository
-import com.example.gwsapp.ui.theme.GWSAppTheme
 import com.example.gwsapp.ui.viewmodel.UsuarioViewModel
 import com.example.gwsapp.ui.components.AppContent
 import com.example.gwsapp.ui.screens.LoginScreen
 import com.google.firebase.auth.FirebaseAuth
-
+import com.example.gwsapp.data.factory.CategoriaViewModelFactory
+import com.example.gwsapp.data.repository.CategoriaRepository
+import com.example.gwsapp.ui.viewmodel.CategoriaViewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -24,7 +25,8 @@ class MainActivity : ComponentActivity() {
 
         val usuarioRepository = UsuarioRepository()
         val usuarioViewModel = ViewModelProvider(this, UsuarioViewModelFactory(usuarioRepository))[UsuarioViewModel::class.java]
-
+        val categoriaRepository = CategoriaRepository()
+        val categoriaViewModel = ViewModelProvider(this, CategoriaViewModelFactory(categoriaRepository))[CategoriaViewModel::class.java]
         setContent {
 
             val navController = rememberNavController()
@@ -47,7 +49,7 @@ class MainActivity : ComponentActivity() {
                     })
                 }
                 composable("app") {
-                    AppContent(usuarioViewModel)
+                    AppContent(usuarioViewModel, categoriaViewModel)
                 }
             }
         }

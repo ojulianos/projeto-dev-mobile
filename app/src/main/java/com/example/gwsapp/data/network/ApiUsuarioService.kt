@@ -1,6 +1,7 @@
 package com.example.gwsapp.data.network
 
 import com.example.gwsapp.data.model.Usuario
+import com.example.gwsapp.data.model.UsuarioCreateRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -14,13 +15,13 @@ interface ApiUsuarioService {
     fun getUsuarios(): Call<List<Usuario>>
 
     @POST("usuarios")
-    fun createUsuario(@Body usuario: Usuario): Call<Usuario>
+    fun createUsuario(@Body usuario: UsuarioCreateRequest): Call<Usuario>
 
     @PUT("usuarios/{id}")
-    fun updateUsuario(@Path("id") id: String, @Body usuario: Usuario): Call<Usuario>
+    fun updateUsuario(@Path("_id") id: String, @Body usuario: Usuario): Call<Usuario>
 
     @DELETE("usuarios/{id}")
-    fun deleteUsuario(@Path("id") id: String): Call<Void>
+    fun deleteUsuario(@Path("_id") id: String): Call<Void>
 
 
 }
