@@ -44,7 +44,7 @@ fun CadastroCategoriaForm(categoria: Categoria?, onClose: () -> Unit, onSave: (C
             Button(onClick = { onClose() }) {
                 Text(text = "Voltar")
             }
-            Button(onClick = { onSave(Categoria(categoria?.id ?: "", nome, descricao, idadeMin, idadeMax)) }) {
+            Button(onClick = { onSave(Categoria(categoria?.id ?: 0, nome, descricao, idadeMin, idadeMax)) }) {
                 Text(text = if (categoria == null) "Salvar" else "Atualizar")
             }
         }

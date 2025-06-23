@@ -32,7 +32,7 @@ class CategoriaRepository {
         })
     }
 
-    fun updateCategoria(id: String, categoria: Categoria, onResult: (Categoria?) -> Unit) {
+    fun updateCategoria(id: Int, categoria: Categoria, onResult: (Categoria?) -> Unit) {
         api.updateCategoria(id, categoria).enqueue(object : Callback<Categoria> {
             override fun onResponse(call: Call<Categoria>, response: Response<Categoria>) {
                 onResult(response.body())
@@ -44,7 +44,7 @@ class CategoriaRepository {
         })
     }
 
-    fun deleteCategoria(id: String, onResult: (Boolean) -> Unit) {
+    fun deleteCategoria(id: Int, onResult: (Boolean) -> Unit) {
         api.deleteCategoria(id).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 onResult(response.isSuccessful)

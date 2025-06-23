@@ -1,7 +1,6 @@
 package com.example.gwsapp.data.repository
 
 import com.example.gwsapp.data.model.Usuario
-import com.example.gwsapp.data.model.UsuarioCreateRequest
 import com.example.gwsapp.data.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,13 +21,7 @@ class UsuarioRepository {
     }
 
     fun createUsuario(usuario: Usuario, onResult: (Usuario?) -> Unit) {
-        val usuarioCreate = UsuarioCreateRequest(
-            nome = usuario.nome,
-            email = usuario.email,
-            dataNascimento = usuario.dataNascimento,
-            senha = usuario.senha
-        )
-        api.createUsuario(usuarioCreate).enqueue(object : Callback<Usuario> {
+        api.createUsuario(usuario).enqueue(object : Callback<Usuario> {
             override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                 onResult(response.body())
             }
@@ -39,7 +32,7 @@ class UsuarioRepository {
         })
     }
 
-    fun updateUsuario(id: String, usuario: Usuario, onResult: (Usuario?) -> Unit) {
+    fun updateUsuario(id: Int, usuario: Usuario, onResult: (Usuario?) -> Unit) {
         api.updateUsuario(id, usuario).enqueue(object : Callback<Usuario> {
             override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                 onResult(response.body())
@@ -51,7 +44,7 @@ class UsuarioRepository {
         })
     }
 
-    fun deleteUsuario(id: String, onResult: (Boolean) -> Unit) {
+    fun deleteUsuario(id: Int, onResult: (Boolean) -> Unit) {
         api.deleteUsuario(id).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 onResult(response.isSuccessful)

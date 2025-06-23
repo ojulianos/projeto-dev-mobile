@@ -8,5 +8,5 @@ object Constants {
         "usuarios" to "Usuários"
     )
 
-    val BASE_URL = "https://crudcrud.com/api/647218611eb14949af237c221515484f/"
+    val BASE_URL = "https://silver-snail-346539.hostingersite.com/"
 }

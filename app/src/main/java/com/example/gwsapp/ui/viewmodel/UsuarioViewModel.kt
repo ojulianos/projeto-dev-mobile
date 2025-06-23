@@ -23,13 +23,13 @@ class UsuarioViewModel(private val repository: UsuarioRepository) : ViewModel() 
         }
     }
 
-    fun updateUsuario(id: String, usuario: Usuario) {
+    fun updateUsuario(id: Int, usuario: Usuario) {
         viewModelScope.launch {
             repository.updateUsuario(id, usuario) { loadUsuarios() }
         }
     }
 
-    fun deleteUsuario(id: String) {
+    fun deleteUsuario(id: Int) {
         viewModelScope.launch {
             repository.deleteUsuario(id) { success ->
                 if (success) loadUsuarios()

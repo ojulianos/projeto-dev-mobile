@@ -22,13 +22,13 @@ class CategoriaViewModel(private val repository: CategoriaRepository): ViewModel
         }
     }
 
-    fun updateCategoria(id: String, categoria: Categoria) {
+    fun updateCategoria(id: Int, categoria: Categoria) {
         viewModelScope.launch {
             repository.updateCategoria(id, categoria) {loadCategoria()}
         }
     }
 
-    fun deleteCategoria(id: String){
+    fun deleteCategoria(id: Int){
         viewModelScope.launch {
             repository.deleteCategoria(id) { success ->
                 if (success) loadCategoria()

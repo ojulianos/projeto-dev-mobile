@@ -65,7 +65,7 @@ fun CadastroUsuarioForm(usuario: Usuario?, onClose: () -> Unit, onSave: (Usuario
                 Text(text = "Voltar")
             }
             Button(onClick = {
-                onSave(Usuario(usuario?.id ?: "", nome, email, dataNascimento, senha))
+                onSave(Usuario(usuario?.id ?: 0, nome, email, dataNascimento, senha))
             }) {
                 Text(text = if (usuario == null) "Salvar" else "Atualizar")
             }

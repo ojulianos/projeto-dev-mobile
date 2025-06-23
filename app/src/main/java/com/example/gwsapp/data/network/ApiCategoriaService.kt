@@ -17,10 +17,10 @@ interface ApiCategoriaService {
     fun createCategoria(@Body categoria: Categoria): Call<Categoria>
 
     @PUT("categoria/{id}")
-    fun updateCategoria(@Path("id") id: String, @Body categoria: Categoria): Call<Categoria>
+    fun updateCategoria(@Path("id") id: Int, @Body categoria: Categoria): Call<Categoria>
 
     @DELETE("categoria/{id}")
-    fun deleteCategoria(@Path("id") id: String): Call<Void>
+    fun deleteCategoria(@Path("id") id: Int): Call<Void>
 
 
 
